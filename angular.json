@@ -6,5 +6,94 @@
   },
   "newProjectRoot": "projects",
   "projects": {
+    "bloggingway-spa": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/bloggingway-spa",
+      "sourceRoot": "projects/bloggingway-spa/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/bloggingway-spa/src/main.ts",
+            "tsConfig": "projects/bloggingway-spa/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/bloggingway-spa/public"
+              }
+            ],
+            "styles": [
+              "projects/bloggingway-spa/src/styles.css"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "bloggingway-spa:build:production"
+            },
+            "development": {
+              "buildTarget": "bloggingway-spa:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
+    },
+    "bloggingway-lib": {
+      "projectType": "library",
+      "root": "projects/bloggingway-lib",
+      "sourceRoot": "projects/bloggingway-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/bloggingway-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/bloggingway-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/bloggingway-lib/tsconfig.spec.json"
+          }
+        }
+      }
+    }
   }
 }

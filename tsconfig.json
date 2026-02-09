@@ -3,6 +3,11 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "bloggingway-lib": [
+        "./dist/bloggingway-lib"
+      ]
+    },
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -21,5 +26,19 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  "files": []
+  "files": [],
+  "references": [
+    {
+      "path": "./projects/bloggingway-spa/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/bloggingway-spa/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/bloggingway-lib/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/bloggingway-lib/tsconfig.spec.json"
+    }
+  ]
 }

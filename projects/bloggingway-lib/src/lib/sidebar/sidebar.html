@@ -1,0 +1,12 @@
+<nav class="sidebar">
+    <h1 class="m-4">Posts</h1>
+  <ul>
+    @for (post of blockPosts(); track post) {
+      <li>
+        <button [routerLink]="['/blog', post.id]" [routerLinkActive]="'sidebar_link_active'">
+          {{ post.title }}
+        </button>
+      </li>
+    }
+  </ul>
+</nav>
