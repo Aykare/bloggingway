@@ -1,4 +1,3 @@
-
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -7,21 +6,14 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   providedIn: 'root',
 })
 export class SizeService {
-    public isMobile = new BehaviorSubject<boolean>(false);
+  public isMobile = new BehaviorSubject<boolean>(false);
   private readonly breakpointObserver = inject(BreakpointObserver);
 
   constructor() {
-
     this.breakpointObserver
       .observe([Breakpoints.HandsetLandscape, Breakpoints.HandsetPortrait])
       .subscribe((result) => {
-        if (result.matches) {
-          this.isMobile.next(false);
-        } else {
-          this.isMobile.next(true);
-        }
+        this.isMobile.next(result.matches);
       });
   }
-
-
 }

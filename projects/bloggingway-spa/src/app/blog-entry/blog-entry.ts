@@ -1,8 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 //this import is actually really bad but i don't have enough fucks to figure out what's wrong in the tsconfig
-import { BlogService } from '../../../../bloggingway-lib/src/public-api';
+import { BlogService, SizeService } from '../../../../bloggingway-lib/src/public-api';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 
 @Component({
@@ -17,7 +17,9 @@ export class BlogEntry {
 
   private readonly blogService = inject(BlogService);
   private readonly activatedRoute = inject(ActivatedRoute);
-
+  private readonly sizeService = inject(SizeService);
+  private readonly router = inject(Router);
+  
   constructor() {
     this.activatedRoute.params
       .pipe(
@@ -30,5 +32,11 @@ export class BlogEntry {
         const post = posts.find((p) => p.id === this.postId());
         this.visiblePost.set(post ? post : null);
       });
+
+    this.sizeService.isMobile.subscribe((isMobile) => {
+      if (isMobile === true) {
+       this.router.navigate(['/blog']);
+      }
+    });
   }
 }

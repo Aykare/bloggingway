@@ -18,8 +18,8 @@ export const mobileGuard: CanActivateFn = (
   const sizeService = inject(SizeService);
 
   return sizeService.isMobile.value === true
-    ? true
-    : new RedirectCommand(inject(Router).parseUrl('/blog'));
+    ? new RedirectCommand(inject(Router).parseUrl('/blog'))
+    : true;
 };
 
 export const routes: Routes = [
