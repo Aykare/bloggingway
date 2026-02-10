@@ -31,10 +31,41 @@ ng generate --help
 To build the project run:
 
 ```bash
-ng build
+ng build bloggingway-spa
 ```
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Deployment
+
+### GitHub Pages
+
+This project is configured to automatically deploy to GitHub Pages. The deployment is triggered automatically when changes are pushed to the `main` branch.
+
+#### Setup Requirements
+
+1. Enable GitHub Pages in your repository settings:
+   - Go to Settings > Pages
+   - Select "GitHub Actions" as the source
+
+2. The deployment workflow will automatically:
+   - Build the Angular application
+   - Deploy to GitHub Pages at `https://[username].github.io/bloggingway/`
+
+#### Manual Deployment
+
+To manually trigger a deployment, you can:
+1. Go to the Actions tab in your repository
+2. Select the "Deploy to GitHub Pages" workflow
+3. Click "Run workflow"
+
+#### Local Build for GitHub Pages
+
+To test the build locally with the correct base path:
+
+```bash
+npx ng build bloggingway-spa --base-href=/bloggingway/
+```
 
 ## Running unit tests
 
