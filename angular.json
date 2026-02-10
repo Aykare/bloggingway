@@ -9,6 +9,7 @@
     "bloggingway-spa": {
       "projectType": "application",
       "schematics": {},
+      "baseHref": "/bloggingway",
       "root": "projects/bloggingway-spa",
       "sourceRoot": "projects/bloggingway-spa/src",
       "prefix": "app",
