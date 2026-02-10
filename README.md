@@ -64,7 +64,7 @@ To manually trigger a deployment, you can:
 To test the build locally with the correct base path:
 
 ```bash
-npm run build bloggingway-spa -- --base-href=/bloggingway/
+npx ng build bloggingway-spa --base-href=/bloggingway/
 ```
 
 ## Running unit tests

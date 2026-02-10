@@ -32,7 +32,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build bloggingway-spa -- --base-href=/bloggingway/
+        run: npx ng build bloggingway-spa --base-href=/bloggingway/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
